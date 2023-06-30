@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Category>
+
+@if (TempData["Info"] is not null)
+{
+	<h3 class="text-center text-danger">@TempData["Info"]</h3>
+}
+
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Please Select The Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.Description</td>
+				<td>
+					<div class="d-flex">
+						<a asp-action="Detail" asp-controller="Category" asp-route-id="@item.ID" class="btn btn-outline-primary ">View Books</a>
+						<a asp-action="Update" asp-controller="Category" asp-route-id="@item.ID" class="btn btn-outline-secondary ">Update Category</a>
+						<a asp-action="Delete" asp-controller="Category" asp-route-id="@item.ID" class="btn btn-outline-primary ">Delete Category</a>
+					</div>
+				</td>
+			</tr>
+		}
+		<tr>
+			<td colspan="4" class="text-center">
+				<a asp-action="Create" asp-controller="Category" class="btn btn-outline-primary">Add Category</a>
+				<a asp-action="Create" asp-controller="Book" class="btn btn-outline-secondary btn-block">Add Book</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

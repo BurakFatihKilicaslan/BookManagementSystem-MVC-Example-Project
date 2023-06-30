@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Book>
+
+@if (TempData["Info"] is not null)
+{
+	<h3 class="text-center text-danger">@TempData["Info"]</h3>
+}
+
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Page Count</th>
+			<th>Publication Date</th>
+			<th>Category Name</th>
+			<th>Author Name</th>
+			<th>Publisher Name</th>
+			<th>Please Select The Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.PageCount</td>
+				<td>@item.PublicationDate</td>
+				<td>@item.Category.Name</td>
+				<td>@item.Author.Name</td>
+				<td>@item.Publisher.Name</td>
+				<td>
+					<div class="d-flex">
+						<a asp-action="Update" asp-controller="Book" asp-route-id="@item.ID" class="btn btn-outline-secondary ">Update Book</a>
+						<a asp-action="Delete" asp-controller="Book" asp-route-id="@item.ID" class="btn btn-outline-primary ">Delete Book</a>
+					</div>
+				</td>
+			</tr>
+		}
+		<tr>
+			<td colspan="7" class="text-center">
+				<a asp-action="Create" asp-controller="Book" class="btn btn-outline-primary">Add Book</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+

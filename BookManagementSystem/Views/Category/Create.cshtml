@@ -1,0 +1,27 @@
+﻿@model VMCategoryCreate
+
+@if (ViewBag.Info is not null)
+{
+	<h3 class="text-center text-danger">@ViewBag.Info</h3>
+}
+
+<form method="post" asp-action="Create" asp-controller="Category">
+	<div>
+		<label>Name:</label>
+		<input asp-for="Name" class="form-control" />
+		<span asp-validation-for="Name" style="color:darkred" />
+	</div>
+	<div>
+		<label>Description:</label>
+		<input asp-for="Description" class="form-control" />
+		<span asp-validation-for="Description" style="color:darkred" />
+	</div>
+	<br />
+	<div class="text-center">
+		<button type="submit" class="btn btn-outline-primary">Add Category</button>
+	</div>
+</form>
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+}

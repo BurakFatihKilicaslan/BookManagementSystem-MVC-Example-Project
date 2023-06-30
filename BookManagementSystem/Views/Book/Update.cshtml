@@ -1,0 +1,45 @@
+﻿@model VMBookUpdate
+
+@if (ViewBag.Info is not null)
+{
+    <h3 class="text-center text-danger">@ViewBag.Info</h3>
+}
+
+<form method="post" asp-action="Update" asp-controller="Book">
+    <input type="hidden" asp-for="Book.ID" />
+    <div>
+        <label>Book Name:</label>
+        <input asp-for="Book.Name" class="form-control" placeholder="@Model.Book.Name" />
+        <span asp-validation-for="@Model.Book.Name" style="color:darkred" />
+    </div>
+    <div>
+        <label>Page Count:</label>
+        <input asp-for="Book.PageCount" class="form-control" placeholder="@Model.Book.PageCount" />
+        <span asp-validation-for="@Model.Book.PageCount" style="color:darkred" />
+    </div>
+    <div>
+        <label>Publication Date:</label>
+        <input asp-for="Book.PublicationDate" class="form-control" placeholder="@Model.Book.PublicationDate" />
+        <span asp-validation-for="@Model.Book.PublicationDate" style="color:darkred" />
+    </div>
+    <div class="form-group">
+        <label>Category Name:</label>
+        <select asp-for="@Model.Book.CategoryID" class="form-control" asp-items="Model.Categories"></select>
+    </div>
+    <div class="form-group">
+        <label>Publisher Name:</label>
+        <select asp-for="@Model.Book.PublisherID" class="form-control" asp-items="Model.Publishers"></select>
+    </div>
+    <div class="form-group">
+        <label>Author Name:</label>
+        <select asp-for="@Model.Book.AuthorID" class="form-control" asp-items="Model.Authors"></select>
+    </div>
+    <br />
+    <div class="text-center">
+        <button type="submit" class="btn btn-outline-primary">Update</button>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

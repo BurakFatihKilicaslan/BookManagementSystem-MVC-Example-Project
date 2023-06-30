@@ -1,0 +1,24 @@
+﻿@model Category
+
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th class="text-lg-center">Name</th>
+			<th class="text-lg-center">Please Select The Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (Book item in Model.Books)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>
+					<div class="d-flex justify-content-center">
+						<a asp-action="Update" asp-controller="Book" asp-route-id="@item.ID" class="btn btn-outline-primary ">Update Book</a>
+						<a asp-action="Delete" asp-controller="Book" asp-route-id="@item.ID" class="btn btn-outline-secondary ">Delete Book</a>
+					</div>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

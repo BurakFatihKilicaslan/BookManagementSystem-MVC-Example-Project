@@ -1,0 +1,26 @@
+﻿@model VMAuthorCreate
+
+@if (ViewBag.Info is not null)
+{
+    <h3 class="text-center text-danger">@ViewBag.Info</h3>
+}
+<form method="post" asp-action="Create" asp-controller="Author">
+    <div>
+        <label>Name:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" style="color:darkred"/>
+    </div>
+    <div>
+        <label>BirthDate:</label>
+        <input asp-for="BirthDate" class="form-control" />
+        <span asp-validation-for="BirthDate" style="color:darkred" />
+    </div>
+    <br />
+    <div class="text-center">
+        <button type="submit" class="btn btn-outline-primary">Add Author</button>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

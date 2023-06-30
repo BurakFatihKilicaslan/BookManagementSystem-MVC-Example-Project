@@ -1,0 +1,38 @@
+﻿@model Publisher
+
+@if (ViewBag.Info is not null)
+{
+	<h3 class="text-center text-danger">@ViewBag.Info</h3>
+}
+
+<form method="post" asp-action="Update" asp-controller="Publisher">
+	<input type="hidden" asp-for="ID" />
+	<div>
+		<label>Publisher Name:</label>
+		<input asp-for="Name" class="form-control" placeholder="@Model.Name" />
+	</div>
+	<div>
+		<label>Address:</label>
+		<input asp-for="Address" class="form-control" placeholder="@Model.Address" />
+		<span asp-validation-for="@Model.Address" style="color:darkred" />
+	</div>
+	<div>
+		<label>Phone:</label>
+		<input asp-for="Phone" class="form-control" placeholder="@Model.Phone" />
+		<span asp-validation-for="@Model.Phone" style="color:darkred" />
+	</div>
+	<div>
+		<label>Foundation Date:</label>
+		<input asp-for="FoundationDate" class="form-control" placeholder="@Model.FoundationDate" />
+		<span asp-validation-for="@Model.FoundationDate" style="color:darkred" />
+	</div>
+	<br />
+	<div class="text-center">
+		<button type="submit" class="btn btn-outline-primary">Update</button>
+	</div>
+</form>
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+}
+

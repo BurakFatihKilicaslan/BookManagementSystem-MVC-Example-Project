@@ -1,0 +1,33 @@
+﻿@model Book
+
+@if (TempData["InfoDeleted"] is not null)
+{
+    <h3 class="text-center text-danger">@TempData["InfoDeleted"]</h3>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th class="text-center">Name</th>
+        <th class="text-center">Page Count</th>
+        <th class="text-center">Publication Date</th>
+        <th class="text-center">Category Name</th>
+        <th class="text-center">Publisher Name</th>
+        <th class="text-center">Author Name</th>
+        <th class="text-lg-center">Please Select The Action</th>
+    </tr>
+    <tr>
+        <td>@Model.Name</td>
+        <td>@Model.PageCount</td>
+        <td>@Model.PublicationDate</td>
+        <td>@Model.Category.Name</td>
+        <td>@Model.Publisher.Name</td>
+        <td>@Model.Author.Name</td>
+        <td class="text-center">
+            <form method="post" asp-action="Delete2" asp-controller="Book">
+                <input type="hidden" asp-for="ID" />
+                <button type="submit" class="btn btn-outline-primary">Delete Book</button>
+            </form>
+        </td>
+    </tr>
+</table>
+

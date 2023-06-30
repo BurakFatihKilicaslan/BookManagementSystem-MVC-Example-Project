@@ -1,0 +1,49 @@
+﻿@model VMBookCreate
+
+@if (ViewBag.Info is not null)
+{
+	<h3 class="text-center text-danger">@ViewBag.Info</h3>
+}
+
+<form method="post" asp-action="Create" asp-controller="Book">
+	<div>
+		<label>Name:</label>
+		<input asp-for="Book.Name" class="form-control" />
+		<span asp-validation-for="Book.Name" style="color:darkred" />
+	</div>
+	<div>
+		<label>Page Count:</label>
+		<input asp-for="Book.PageCount" class="form-control" />
+		<span asp-validation-for="Book.PageCount" style="color:darkred" />
+	</div>
+	<div>
+		<label>Publication Date:</label>
+		<input asp-for="Book.PublicationDate" class="form-control" />
+		<span asp-validation-for="Book.PublicationDate" style="color:darkred" />
+	</div>
+	<div class="form-group">
+		<label>Category Name:</label>
+		<select asp-for="Book.CategoryID" class="form-control" asp-items="Model.Categories"></select>
+	</div>
+	<div class="form-group">
+		<label>Publisher Name:</label>
+		<select asp-for="Book.PublisherID" class="form-control" asp-items="Model.Publishers"></select>
+	</div>
+	<div class="form-group">
+		<label>Author Name:</label>
+		<select asp-for="Book.AuthorID" class="form-control" asp-items="Model.Authors"></select>
+	</div>
+	<br />
+	<div class="text-center">
+		<button type="submit" class="btn btn-outline-primary btn-block">Add Book</button>
+		<a asp-action="Create" asp-controller="Category" class="btn btn-outline-secondary btn-block">Add Category</a>
+		<a asp-action="Create" asp-controller="Publisher" class="btn btn-outline-secondary btn-block">Add Publisher</a>
+		<a asp-action="Create" asp-controller="Author" class="btn btn-outline-secondary btn-block">Add Author</a>
+	</div>
+</form>
+
+
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+}
