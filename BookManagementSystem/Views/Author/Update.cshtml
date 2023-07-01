@@ -6,6 +6,7 @@
 }
 
 <form method="post" asp-action="Update" asp-controller="Author">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="ID" />
     <div>
         <label>Author Name:</label>

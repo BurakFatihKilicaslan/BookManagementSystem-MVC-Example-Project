@@ -6,6 +6,7 @@
 }
 
 <form method="post" asp-action="Create" asp-controller="Publisher">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 	<div>
 		<label>Publisher Name:</label>
 		<input asp-for="Name" class="form-control" />
