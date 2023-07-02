@@ -1,12 +1,15 @@
 using BookManagementSystem.DAL.Context;
 using BookManagementSystem.DAL.Repositories.Abstract;
 using BookManagementSystem.DAL.Repositories.Concrete;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Program>());
 
 //Add Database
 builder.Services.AddDbContext<BookManagementDB>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));

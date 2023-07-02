@@ -30,7 +30,7 @@ namespace BookManagementSystem.Controllers
             VMBookCreate create = new();
             create.Book = new Book();
             create.Categories = new SelectList(categoryRepository.GetAll(), "ID", "Name");
-            create.Publishers = new SelectList(publisherRepository.GetAll().ToList(), "ID", "Name");
+            create.Publishers = new SelectList(publisherRepository.GetAll(), "ID", "Name");
             create.Authors = new SelectList(authorRepository.GetAll(), "ID", "Name");
 
             return View(create);
