@@ -7,7 +7,9 @@ namespace BookManagementSystem.Models.Validators
 	{
 		public VMBookCreateValidator() 
 		{
-			RuleFor(x => x.Book.Name).NotEmpty().MinimumLength(3).MaximumLength(100);
+			RuleFor(x => x.Book.Name).NotEmpty();
+			RuleFor(x => x.Book.Name).MinimumLength(3);
+			RuleFor(x => x.Book.Name).MaximumLength(100);
 
 			RuleFor(x => x.Book.PageCount).NotEmpty();
 			RuleFor(x => x.Book.PageCount).GreaterThan(10);
